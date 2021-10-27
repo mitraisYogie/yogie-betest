@@ -5,7 +5,8 @@ import mongoose from "mongoose";
 const User = mongoose.Schema({
     userId:{
         type: String,
-        required: true
+        required: true,
+        unique : true
     },
     userName:{
         type: String,
@@ -13,7 +14,8 @@ const User = mongoose.Schema({
     },
     accountNumber:{
         type: String,
-        required: true
+        required: true,
+        unique : true
     },
     emailAddress:{
         type: String,

@@ -22,6 +22,25 @@ export const getUserDataById = async (req, res) => {
     }
      
 }
+
+export const getUserDataByIdentityNumber = async (req, res) => {
+        try {
+            // const user = await User.findById(req.params.id);
+            const user = await User.find({userId : req.params.userId});
+            res.json(user);
+        } catch (error) {
+            res.status(404).json({message: error.message});
+        }
+
+    }
+export const getUserDataByAccountNumber = async (req, res) => {
+    try {
+        const user = await User.find({accountNumber : req.params.accountNum});
+        res.json(user);
+    } catch (error) {
+        res.status(404).json({message: error.message});
+    }
+}
  
 // function Create user
 export const createUserData = async (req, res) => {
