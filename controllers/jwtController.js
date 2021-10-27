@@ -7,7 +7,7 @@ export const generateJWT = async (req, res) => {
         },
         "simpleSecret",
         {
-            expiresIn: "5m",
+            expiresIn: "30m",
         }
     )
     return res.status(201).json({
