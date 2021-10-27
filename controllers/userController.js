@@ -26,7 +26,7 @@ export const getUserDataById = async (req, res) => {
 export const getUserDataByIdentityNumber = async (req, res) => {
         try {
             // const user = await User.findById(req.params.id);
-            const user = await User.find({userId : req.params.userId});
+            const user = await User.find({identityNumber : req.params.identityNumber});
             res.json(user);
         } catch (error) {
             res.status(404).json({message: error.message});
@@ -47,7 +47,10 @@ export const createUserData = async (req, res) => {
     const user = new User(req.body);
     try {
         const savedUser = await user.save();
-        res.status(201).json(savedUser);
+        res.status(201).json({
+            message : "success",
+            ...savedUser
+        });
     } catch (error) {
         res.status(400).json({message: error.message});
     }
@@ -64,6 +67,28 @@ export const updateUserData = async (req, res) => {
         res.status(400).json({message: error.message});
     }
 }
+
+export const updateUserDataByIdentityNumber = async (req, res) => {
+    const checkedUser = await User.find({identityNumber : req.params.identityNumber});
+    if(!checkedUser) return res.status(404).json({message: "Data tidak ditemukan"});
+    try {
+        const updatedUser = await User.updateOne({identityNumber : req.params.identityNumber}, {$set: req.body});
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+}
+
+export const updateUserDataByAccountNum = async (req, res) => {
+    const checkedUser = await User.find({accountNumber : req.params.accountNum});
+    if(!checkedUser) return res.status(404).json({message: "Data tidak ditemukan"});
+    try {
+        const updatedUser = await User.updateOne({accountNumber : req.params.accountNum}, {$set: req.body});
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+}
  
 // function Delete user
 export const deleteUserData = async (req, res) => {
@@ -75,4 +100,26 @@ export const deleteUserData = async (req, res) => {
     } catch (error) {
         res.status(400).json({message: error.message});
     }
+}
+
+export const deleteUserDataByIdentityNumber = async (req, res) => {
+    const checkedUser = await User.find({identityNumber : req.params.identityNumber});
+    if(!checkedUser) return res.status(404).json({message: "Data tidak ditemukan"});
+    try {
+        const deletedUser = await User.deleteOne({identityNumber : req.params.identityNumber});
+        res.status(200).json(deletedUser);
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+}
+
+export const deleteUserDataByAccountNum = async (req, res) => {
+    const checkedUser = await User.find({accountNumber : parseInt(req.params.accountNum)});
+    if(!checkedUser) return res.status(404).json({message: "Data tidak ditemukan"});
+    try {
+        const deletedUser = await User.deleteOne({accountNumber : req.params.accountNum});
+        res.status(200).json(deletedUser);
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
 }

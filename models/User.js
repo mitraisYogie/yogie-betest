@@ -13,7 +13,7 @@ const User = mongoose.Schema({
         required: true
     },
     accountNumber:{
-        type: String,
+        type: Number,
         required: true,
         unique : true
     },
@@ -22,7 +22,7 @@ const User = mongoose.Schema({
         required: true
     },
     identityNumber:{
-        type: String,
+        type: Number,
         required: true
     },
 });
