@@ -4,10 +4,13 @@
   "description": "for testing CRUD",
   "type": "module",
   "main": "index.js",
+  "engines": {
+    "node": "16.11.1"
+  },
   "scripts": {
     "test": "mocha --timeout 5000",
     "start-dev" : "nodemon .",
-    "start" :  "nodemon ."
+    "start" :  "node index.js"
   },
   "author": "",
   "license": "ISC",
