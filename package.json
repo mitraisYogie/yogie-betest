@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --timeout 5000",
-    "start-dev" : "nodemon .s"
+    "start-dev" : "nodemon .",
+    "start" :  "nodemon ."
   },
   "author": "",
   "license": "ISC",
