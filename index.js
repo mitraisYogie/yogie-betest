@@ -21,4 +21,5 @@ app.use(express.json());
 app.use('/',route);
 
 // listening to port
-export default app.listen('3000',()=> console.log('Server Running at port: 3000'));
+const PORT = process.env.PORT || 3000;
+export default app.listen(PORT,()=> console.log(`Server Running at port: ${PORT}`));
