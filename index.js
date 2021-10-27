@@ -6,9 +6,10 @@ import route from "./routes/index.js";
 
 const app = express();
 
+// db connect
 mongoose.connect("mongodb+srv://vouch-admin:vouch@cluster0.xr0cn.mongodb.net/db_yogie_betest?retryWrites=true&w=majority",{ 
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
 
 const db = mongoose.connection;
