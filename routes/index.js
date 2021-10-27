@@ -1,7 +1,7 @@
 import express from "express";
 import { getUserData, getUserDataByIdentityNumber, getUserDataByAccountNumber, createUserData, updateUserDataByIdentityNumber, updateUserDataByAccountNum, deleteUserDataByIdentityNumber, deleteUserDataByAccountNum} from "../controllers/userController.js";
 import { generateJWT, verifyJWT } from '../controllers/jwtController.js'
- 
+
 
 const router = express.Router();
  
